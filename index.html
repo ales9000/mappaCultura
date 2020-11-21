@@ -44,10 +44,11 @@
         <script src="data/Monumento_7.js"></script>
         <script src="data/MonumentoIndustriale_8.js"></script>
         <script src="data/MonumentoFunerario_9.js"></script>
-        <script src="data/ParcoArcheologico_10.js"></script>
-        <script src="data/Parcoogiardino_11.js"></script>
-        <script src="data/VillaoPalazzo_12.js"></script>
-        <script src="data/Altro_13.js"></script>
+        <script src="data/MuseooGalleria_10.js"></script>
+        <script src="data/ParcoArcheologico_11.js"></script>
+        <script src="data/Parcoogiardino_12.js"></script>
+        <script src="data/VillaoPalazzo_13.js"></script>
+        <script src="data/Altro_14.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
@@ -690,7 +691,7 @@
         });
         bounds_group.addLayer(layer_MonumentoFunerario_9);
         map.addLayer(layer_MonumentoFunerario_9);
-        function pop_ParcoArcheologico_10(feature, layer) {
+        function pop_MuseooGalleria_10(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
@@ -729,9 +730,80 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ParcoArcheologico_10_0() {
+        function style_MuseooGalleria_10_0() {
             return {
-                pane: 'pane_ParcoArcheologico_10',
+                pane: 'pane_MuseooGalleria_10',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourist_art_gallery2.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_MuseooGalleria_10');
+        map.getPane('pane_MuseooGalleria_10').style.zIndex = 410;
+        map.getPane('pane_MuseooGalleria_10').style['mix-blend-mode'] = 'normal';
+        var layer_MuseooGalleria_10 = new L.geoJson(json_MuseooGalleria_10, {
+            attribution: '',
+            pane: 'pane_MuseooGalleria_10',
+            onEachFeature: pop_MuseooGalleria_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_MuseooGalleria_10_0(feature));
+            },
+        });
+        var cluster_MuseooGalleria_10 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_MuseooGalleria_10.addLayer(layer_MuseooGalleria_10);
+
+        bounds_group.addLayer(layer_MuseooGalleria_10);
+        cluster_MuseooGalleria_10.addTo(map);
+        function pop_ParcoArcheologico_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ParcoArcheologico_11_0() {
+            return {
+                pane: 'pane_ParcoArcheologico_11',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -740,28 +812,28 @@
         }),
             }
         }
-        map.createPane('pane_ParcoArcheologico_10');
-        map.getPane('pane_ParcoArcheologico_10').style.zIndex = 410;
-        map.getPane('pane_ParcoArcheologico_10').style['mix-blend-mode'] = 'normal';
-        var layer_ParcoArcheologico_10 = new L.geoJson(json_ParcoArcheologico_10, {
+        map.createPane('pane_ParcoArcheologico_11');
+        map.getPane('pane_ParcoArcheologico_11').style.zIndex = 411;
+        map.getPane('pane_ParcoArcheologico_11').style['mix-blend-mode'] = 'normal';
+        var layer_ParcoArcheologico_11 = new L.geoJson(json_ParcoArcheologico_11, {
             attribution: '',
-            pane: 'pane_ParcoArcheologico_10',
-            onEachFeature: pop_ParcoArcheologico_10,
+            pane: 'pane_ParcoArcheologico_11',
+            onEachFeature: pop_ParcoArcheologico_11,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_ParcoArcheologico_10_0(feature));
+                return L.marker(latlng, style_ParcoArcheologico_11_0(feature));
             },
         });
-        var cluster_ParcoArcheologico_10 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_ParcoArcheologico_11 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_ParcoArcheologico_10.addLayer(layer_ParcoArcheologico_10);
+        cluster_ParcoArcheologico_11.addLayer(layer_ParcoArcheologico_11);
 
-        bounds_group.addLayer(layer_ParcoArcheologico_10);
-        cluster_ParcoArcheologico_10.addTo(map);
-        function pop_Parcoogiardino_11(feature, layer) {
+        bounds_group.addLayer(layer_ParcoArcheologico_11);
+        cluster_ParcoArcheologico_11.addTo(map);
+        function pop_Parcoogiardino_12(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
@@ -800,9 +872,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Parcoogiardino_11_0() {
+        function style_Parcoogiardino_12_0() {
             return {
-                pane: 'pane_Parcoogiardino_11',
+                pane: 'pane_Parcoogiardino_12',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -811,28 +883,28 @@
         }),
             }
         }
-        map.createPane('pane_Parcoogiardino_11');
-        map.getPane('pane_Parcoogiardino_11').style.zIndex = 411;
-        map.getPane('pane_Parcoogiardino_11').style['mix-blend-mode'] = 'normal';
-        var layer_Parcoogiardino_11 = new L.geoJson(json_Parcoogiardino_11, {
+        map.createPane('pane_Parcoogiardino_12');
+        map.getPane('pane_Parcoogiardino_12').style.zIndex = 412;
+        map.getPane('pane_Parcoogiardino_12').style['mix-blend-mode'] = 'normal';
+        var layer_Parcoogiardino_12 = new L.geoJson(json_Parcoogiardino_12, {
             attribution: '',
-            pane: 'pane_Parcoogiardino_11',
-            onEachFeature: pop_Parcoogiardino_11,
+            pane: 'pane_Parcoogiardino_12',
+            onEachFeature: pop_Parcoogiardino_12,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Parcoogiardino_11_0(feature));
+                return L.marker(latlng, style_Parcoogiardino_12_0(feature));
             },
         });
-        var cluster_Parcoogiardino_11 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Parcoogiardino_12 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_Parcoogiardino_11.addLayer(layer_Parcoogiardino_11);
+        cluster_Parcoogiardino_12.addLayer(layer_Parcoogiardino_12);
 
-        bounds_group.addLayer(layer_Parcoogiardino_11);
-        cluster_Parcoogiardino_11.addTo(map);
-        function pop_VillaoPalazzo_12(feature, layer) {
+        bounds_group.addLayer(layer_Parcoogiardino_12);
+        cluster_Parcoogiardino_12.addTo(map);
+        function pop_VillaoPalazzo_13(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
@@ -871,9 +943,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_VillaoPalazzo_12_0() {
+        function style_VillaoPalazzo_13_0() {
             return {
-                pane: 'pane_VillaoPalazzo_12',
+                pane: 'pane_VillaoPalazzo_13',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -882,28 +954,28 @@
         }),
             }
         }
-        map.createPane('pane_VillaoPalazzo_12');
-        map.getPane('pane_VillaoPalazzo_12').style.zIndex = 412;
-        map.getPane('pane_VillaoPalazzo_12').style['mix-blend-mode'] = 'normal';
-        var layer_VillaoPalazzo_12 = new L.geoJson(json_VillaoPalazzo_12, {
+        map.createPane('pane_VillaoPalazzo_13');
+        map.getPane('pane_VillaoPalazzo_13').style.zIndex = 413;
+        map.getPane('pane_VillaoPalazzo_13').style['mix-blend-mode'] = 'normal';
+        var layer_VillaoPalazzo_13 = new L.geoJson(json_VillaoPalazzo_13, {
             attribution: '',
-            pane: 'pane_VillaoPalazzo_12',
-            onEachFeature: pop_VillaoPalazzo_12,
+            pane: 'pane_VillaoPalazzo_13',
+            onEachFeature: pop_VillaoPalazzo_13,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_VillaoPalazzo_12_0(feature));
+                return L.marker(latlng, style_VillaoPalazzo_13_0(feature));
             },
         });
-        var cluster_VillaoPalazzo_12 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_VillaoPalazzo_13 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_VillaoPalazzo_12.addLayer(layer_VillaoPalazzo_12);
+        cluster_VillaoPalazzo_13.addLayer(layer_VillaoPalazzo_13);
 
-        bounds_group.addLayer(layer_VillaoPalazzo_12);
-        cluster_VillaoPalazzo_12.addTo(map);
-        function pop_Altro_13(feature, layer) {
+        bounds_group.addLayer(layer_VillaoPalazzo_13);
+        cluster_VillaoPalazzo_13.addTo(map);
+        function pop_Altro_14(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
@@ -942,9 +1014,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_Altro_13_0() {
+        function style_Altro_14_0() {
             return {
-                pane: 'pane_Altro_13',
+                pane: 'pane_Altro_14',
         rotationAngle: 0.0,
         rotationOrigin: 'center center',
         icon: L.icon({
@@ -953,27 +1025,27 @@
         }),
             }
         }
-        map.createPane('pane_Altro_13');
-        map.getPane('pane_Altro_13').style.zIndex = 413;
-        map.getPane('pane_Altro_13').style['mix-blend-mode'] = 'normal';
-        var layer_Altro_13 = new L.geoJson(json_Altro_13, {
+        map.createPane('pane_Altro_14');
+        map.getPane('pane_Altro_14').style.zIndex = 414;
+        map.getPane('pane_Altro_14').style['mix-blend-mode'] = 'normal';
+        var layer_Altro_14 = new L.geoJson(json_Altro_14, {
             attribution: '',
-            pane: 'pane_Altro_13',
-            onEachFeature: pop_Altro_13,
+            pane: 'pane_Altro_14',
+            onEachFeature: pop_Altro_14,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_Altro_13_0(feature));
+                return L.marker(latlng, style_Altro_14_0(feature));
             },
         });
-        var cluster_Altro_13 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Altro_14 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_Altro_13.addLayer(layer_Altro_13);
+        cluster_Altro_14.addLayer(layer_Altro_14);
 
-        bounds_group.addLayer(layer_Altro_13);
-        cluster_Altro_13.addTo(map);
+        bounds_group.addLayer(layer_Altro_14);
+        cluster_Altro_14.addTo(map);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -985,7 +1057,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/Altro_13.png" /> Altro': cluster_Altro_13,'<img src="legend/VillaoPalazzo_12.png" /> Villa o Palazzo': cluster_VillaoPalazzo_12,'<img src="legend/Parcoogiardino_11.png" /> Parco o giardino': cluster_Parcoogiardino_11,'<img src="legend/ParcoArcheologico_10.png" /> Parco Archeologico': cluster_ParcoArcheologico_10,'<img src="legend/MonumentoFunerario_9.png" /> Monumento Funerario': layer_MonumentoFunerario_9,'<img src="legend/MonumentoIndustriale_8.png" /> Monumento Industriale': layer_MonumentoIndustriale_8,'<img src="legend/Monumento_7.png" /> Monumento': layer_Monumento_7,'<img src="legend/Chiesaoedificiodiculto_6.png" /> Chiesa o edificio di culto': cluster_Chiesaoedificiodiculto_6,'<img src="legend/Biblioteca_5.png" /> Biblioteca': cluster_Biblioteca_5,'<img src="legend/Areaarcheologica_4.png" /> Area archeologica': cluster_Areaarcheologica_4,'<img src="legend/Archivio_3.png" /> Archivio': cluster_Archivio_3,'<img src="legend/ArchitetturaFortificata_2.png" /> Architettura Fortificata': cluster_ArchitetturaFortificata_2,'<img src="legend/Architetturacivile_1.png" /> Architettura civile': cluster_Architetturacivile_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Altro_14.png" /> Altro': cluster_Altro_14,'<img src="legend/VillaoPalazzo_13.png" /> Villa o Palazzo': cluster_VillaoPalazzo_13,'<img src="legend/Parcoogiardino_12.png" /> Parco o giardino': cluster_Parcoogiardino_12,'<img src="legend/ParcoArcheologico_11.png" /> Parco Archeologico': cluster_ParcoArcheologico_11,'<img src="legend/MuseooGalleria_10.png" /> Museo o Galleria ': cluster_MuseooGalleria_10,'<img src="legend/MonumentoFunerario_9.png" /> Monumento Funerario': layer_MonumentoFunerario_9,'<img src="legend/MonumentoIndustriale_8.png" /> Monumento Industriale': layer_MonumentoIndustriale_8,'<img src="legend/Monumento_7.png" /> Monumento': layer_Monumento_7,'<img src="legend/Chiesaoedificiodiculto_6.png" /> Chiesa o edificio di culto': cluster_Chiesaoedificiodiculto_6,'<img src="legend/Biblioteca_5.png" /> Biblioteca': cluster_Biblioteca_5,'<img src="legend/Areaarcheologica_4.png" /> Area archeologica': cluster_Areaarcheologica_4,'<img src="legend/Archivio_3.png" /> Archivio': cluster_Archivio_3,'<img src="legend/ArchitetturaFortificata_2.png" /> Architettura Fortificata': cluster_ArchitetturaFortificata_2,'<img src="legend/Architetturacivile_1.png" /> Architettura civile': cluster_Architetturacivile_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>
