@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/MarkerCluster.css">
         <link rel="stylesheet" href="css/MarkerCluster.Default.css">
-        <link rel="stylesheet" href="css/leaflet-search.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <style>
         html, body, #map {
             width: 100%;
@@ -33,18 +33,25 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet.markercluster.js"></script>
-        <script src="js/leaflet-search.js"></script>
-        <script src="data/datasetluoghiGEO_Pulito_1.js"></script>
+        <script src="data/Architetturacivile_1.js"></script>
+        <script src="data/ArchitetturaFortificata_2.js"></script>
+        <script src="data/Archivio_3.js"></script>
+        <script src="data/Areaarcheologica_4.js"></script>
+        <script src="data/Biblioteca_5.js"></script>
+        <script src="data/Chiesaoedificiodiculto_6.js"></script>
+        <script src="data/Monumento_7.js"></script>
+        <script src="data/MonumentoIndustriale_8.js"></script>
+        <script src="data/MonumentoFunerario_9.js"></script>
+        <script src="data/ParcoArcheologico_10.js"></script>
+        <script src="data/Parcoogiardino_11.js"></script>
+        <script src="data/VillaoPalazzo_12.js"></script>
+        <script src="data/Altro_13.js"></script>
         <script>
-        var highlightLayer;
-        function highlightFeature(e) {
-            highlightLayer = e.target;
-            highlightLayer.openPopup();
-        }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[39.65514157927358,7.318438157403291],[46.1015017916673,15.24112928762114]]);
+        }).fitBounds([[40.23444449173605,7.578679304160334],[45.21323443781089,17.939875663711568]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
         var bounds_group = new L.featureGroup([]);
@@ -56,82 +63,930 @@
         });
         layer_OSMStandard_0;
         map.addLayer(layer_OSMStandard_0);
-        function pop_datasetluoghiGEO_Pulito_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    if (typeof layer.closePopup == 'function') {
-                        layer.closePopup();
-                    } else {
-                        layer.eachLayer(function(feature){
-                            feature.closePopup()
-                        });
-                    }
-                },
-                mouseover: highlightFeature,
-            });
+        function pop_Architetturacivile_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['_ - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @id'])) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['_ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @type'])) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['_ - clvapit:lat'] !== null ? Autolinker.link(String(feature.properties['_ - clvapit:lat'])) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['_ - clvapit:long'] !== null ? Autolinker.link(String(feature.properties['_ - clvapit:long'])) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_datasetluoghiGEO_Pulito_1_0() {
+        function style_Architetturacivile_1_0() {
             return {
-                pane: 'pane_datasetluoghiGEO_Pulito_1',
-                radius: 7.0,
-                opacity: 1,
-                color: 'rgba(50,87,128,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 2.0,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(72,123,182,1.0)',
+                pane: 'pane_Architetturacivile_1',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourism=museum.svg',
+            iconSize: [19.0, 19.0]
+        }),
             }
         }
-        map.createPane('pane_datasetluoghiGEO_Pulito_1');
-        map.getPane('pane_datasetluoghiGEO_Pulito_1').style.zIndex = 401;
-        map.getPane('pane_datasetluoghiGEO_Pulito_1').style['mix-blend-mode'] = 'normal';
-        var layer_datasetluoghiGEO_Pulito_1 = new L.geoJson(json_datasetluoghiGEO_Pulito_1, {
+        map.createPane('pane_Architetturacivile_1');
+        map.getPane('pane_Architetturacivile_1').style.zIndex = 401;
+        map.getPane('pane_Architetturacivile_1').style['mix-blend-mode'] = 'normal';
+        var layer_Architetturacivile_1 = new L.geoJson(json_Architetturacivile_1, {
             attribution: '',
-            pane: 'pane_datasetluoghiGEO_Pulito_1',
-            onEachFeature: pop_datasetluoghiGEO_Pulito_1,
+            pane: 'pane_Architetturacivile_1',
+            onEachFeature: pop_Architetturacivile_1,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_datasetluoghiGEO_Pulito_1_0(feature));
+                return L.marker(latlng, style_Architetturacivile_1_0(feature));
             },
         });
-        var cluster_datasetluoghiGEO_Pulito_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+        var cluster_Architetturacivile_1 = new L.MarkerClusterGroup({showCoverageOnHover: false,
             spiderfyDistanceMultiplier: 2});
-        cluster_datasetluoghiGEO_Pulito_1.addLayer(layer_datasetluoghiGEO_Pulito_1);
+        cluster_Architetturacivile_1.addLayer(layer_Architetturacivile_1);
 
-        bounds_group.addLayer(layer_datasetluoghiGEO_Pulito_1);
-        cluster_datasetluoghiGEO_Pulito_1.addTo(map);
+        bounds_group.addLayer(layer_Architetturacivile_1);
+        cluster_Architetturacivile_1.addTo(map);
+        function pop_ArchitetturaFortificata_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ArchitetturaFortificata_2_0() {
+            return {
+                pane: 'pane_ArchitetturaFortificata_2',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourist_beach.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_ArchitetturaFortificata_2');
+        map.getPane('pane_ArchitetturaFortificata_2').style.zIndex = 402;
+        map.getPane('pane_ArchitetturaFortificata_2').style['mix-blend-mode'] = 'normal';
+        var layer_ArchitetturaFortificata_2 = new L.geoJson(json_ArchitetturaFortificata_2, {
+            attribution: '',
+            pane: 'pane_ArchitetturaFortificata_2',
+            onEachFeature: pop_ArchitetturaFortificata_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_ArchitetturaFortificata_2_0(feature));
+            },
+        });
+        var cluster_ArchitetturaFortificata_2 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_ArchitetturaFortificata_2.addLayer(layer_ArchitetturaFortificata_2);
+
+        bounds_group.addLayer(layer_ArchitetturaFortificata_2);
+        cluster_ArchitetturaFortificata_2.addTo(map);
+        function pop_Archivio_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Archivio_3_0() {
+            return {
+                pane: 'pane_Archivio_3',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/amenity_library.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Archivio_3');
+        map.getPane('pane_Archivio_3').style.zIndex = 403;
+        map.getPane('pane_Archivio_3').style['mix-blend-mode'] = 'normal';
+        var layer_Archivio_3 = new L.geoJson(json_Archivio_3, {
+            attribution: '',
+            pane: 'pane_Archivio_3',
+            onEachFeature: pop_Archivio_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Archivio_3_0(feature));
+            },
+        });
+        var cluster_Archivio_3 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Archivio_3.addLayer(layer_Archivio_3);
+
+        bounds_group.addLayer(layer_Archivio_3);
+        cluster_Archivio_3.addTo(map);
+        function pop_Areaarcheologica_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Areaarcheologica_4_0() {
+            return {
+                pane: 'pane_Areaarcheologica_4',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourist_archaeological.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Areaarcheologica_4');
+        map.getPane('pane_Areaarcheologica_4').style.zIndex = 404;
+        map.getPane('pane_Areaarcheologica_4').style['mix-blend-mode'] = 'normal';
+        var layer_Areaarcheologica_4 = new L.geoJson(json_Areaarcheologica_4, {
+            attribution: '',
+            pane: 'pane_Areaarcheologica_4',
+            onEachFeature: pop_Areaarcheologica_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Areaarcheologica_4_0(feature));
+            },
+        });
+        var cluster_Areaarcheologica_4 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Areaarcheologica_4.addLayer(layer_Areaarcheologica_4);
+
+        bounds_group.addLayer(layer_Areaarcheologica_4);
+        cluster_Areaarcheologica_4.addTo(map);
+        function pop_Biblioteca_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Biblioteca_5_0() {
+            return {
+                pane: 'pane_Biblioteca_5',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourism=museum.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Biblioteca_5');
+        map.getPane('pane_Biblioteca_5').style.zIndex = 405;
+        map.getPane('pane_Biblioteca_5').style['mix-blend-mode'] = 'normal';
+        var layer_Biblioteca_5 = new L.geoJson(json_Biblioteca_5, {
+            attribution: '',
+            pane: 'pane_Biblioteca_5',
+            onEachFeature: pop_Biblioteca_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Biblioteca_5_0(feature));
+            },
+        });
+        var cluster_Biblioteca_5 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Biblioteca_5.addLayer(layer_Biblioteca_5);
+
+        bounds_group.addLayer(layer_Biblioteca_5);
+        cluster_Biblioteca_5.addTo(map);
+        function pop_Chiesaoedificiodiculto_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Chiesaoedificiodiculto_6_0() {
+            return {
+                pane: 'pane_Chiesaoedificiodiculto_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/religion=christian.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Chiesaoedificiodiculto_6');
+        map.getPane('pane_Chiesaoedificiodiculto_6').style.zIndex = 406;
+        map.getPane('pane_Chiesaoedificiodiculto_6').style['mix-blend-mode'] = 'normal';
+        var layer_Chiesaoedificiodiculto_6 = new L.geoJson(json_Chiesaoedificiodiculto_6, {
+            attribution: '',
+            pane: 'pane_Chiesaoedificiodiculto_6',
+            onEachFeature: pop_Chiesaoedificiodiculto_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Chiesaoedificiodiculto_6_0(feature));
+            },
+        });
+        var cluster_Chiesaoedificiodiculto_6 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Chiesaoedificiodiculto_6.addLayer(layer_Chiesaoedificiodiculto_6);
+
+        bounds_group.addLayer(layer_Chiesaoedificiodiculto_6);
+        cluster_Chiesaoedificiodiculto_6.addTo(map);
+        function pop_Monumento_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Monumento_7_0() {
+            return {
+                pane: 'pane_Monumento_7',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourist_monument.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Monumento_7');
+        map.getPane('pane_Monumento_7').style.zIndex = 407;
+        map.getPane('pane_Monumento_7').style['mix-blend-mode'] = 'normal';
+        var layer_Monumento_7 = new L.geoJson(json_Monumento_7, {
+            attribution: '',
+            pane: 'pane_Monumento_7',
+            onEachFeature: pop_Monumento_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Monumento_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Monumento_7);
+        map.addLayer(layer_Monumento_7);
+        function pop_MonumentoIndustriale_8(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MonumentoIndustriale_8_0() {
+            return {
+                pane: 'pane_MonumentoIndustriale_8',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/poi_mine.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_MonumentoIndustriale_8');
+        map.getPane('pane_MonumentoIndustriale_8').style.zIndex = 408;
+        map.getPane('pane_MonumentoIndustriale_8').style['mix-blend-mode'] = 'normal';
+        var layer_MonumentoIndustriale_8 = new L.geoJson(json_MonumentoIndustriale_8, {
+            attribution: '',
+            pane: 'pane_MonumentoIndustriale_8',
+            onEachFeature: pop_MonumentoIndustriale_8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_MonumentoIndustriale_8_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_MonumentoIndustriale_8);
+        map.addLayer(layer_MonumentoIndustriale_8);
+        function pop_MonumentoFunerario_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_MonumentoFunerario_9_0() {
+            return {
+                pane: 'pane_MonumentoFunerario_9',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/amenity=place_of_worship.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_MonumentoFunerario_9');
+        map.getPane('pane_MonumentoFunerario_9').style.zIndex = 409;
+        map.getPane('pane_MonumentoFunerario_9').style['mix-blend-mode'] = 'normal';
+        var layer_MonumentoFunerario_9 = new L.geoJson(json_MonumentoFunerario_9, {
+            attribution: '',
+            pane: 'pane_MonumentoFunerario_9',
+            onEachFeature: pop_MonumentoFunerario_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_MonumentoFunerario_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_MonumentoFunerario_9);
+        map.addLayer(layer_MonumentoFunerario_9);
+        function pop_ParcoArcheologico_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ParcoArcheologico_10_0() {
+            return {
+                pane: 'pane_ParcoArcheologico_10',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourist_archaeological2.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_ParcoArcheologico_10');
+        map.getPane('pane_ParcoArcheologico_10').style.zIndex = 410;
+        map.getPane('pane_ParcoArcheologico_10').style['mix-blend-mode'] = 'normal';
+        var layer_ParcoArcheologico_10 = new L.geoJson(json_ParcoArcheologico_10, {
+            attribution: '',
+            pane: 'pane_ParcoArcheologico_10',
+            onEachFeature: pop_ParcoArcheologico_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_ParcoArcheologico_10_0(feature));
+            },
+        });
+        var cluster_ParcoArcheologico_10 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_ParcoArcheologico_10.addLayer(layer_ParcoArcheologico_10);
+
+        bounds_group.addLayer(layer_ParcoArcheologico_10);
+        cluster_ParcoArcheologico_10.addTo(map);
+        function pop_Parcoogiardino_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Parcoogiardino_11_0() {
+            return {
+                pane: 'pane_Parcoogiardino_11',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/landuse_coniferous_and_deciduous.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_Parcoogiardino_11');
+        map.getPane('pane_Parcoogiardino_11').style.zIndex = 411;
+        map.getPane('pane_Parcoogiardino_11').style['mix-blend-mode'] = 'normal';
+        var layer_Parcoogiardino_11 = new L.geoJson(json_Parcoogiardino_11, {
+            attribution: '',
+            pane: 'pane_Parcoogiardino_11',
+            onEachFeature: pop_Parcoogiardino_11,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Parcoogiardino_11_0(feature));
+            },
+        });
+        var cluster_Parcoogiardino_11 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Parcoogiardino_11.addLayer(layer_Parcoogiardino_11);
+
+        bounds_group.addLayer(layer_Parcoogiardino_11);
+        cluster_Parcoogiardino_11.addTo(map);
+        function pop_VillaoPalazzo_12(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_VillaoPalazzo_12_0() {
+            return {
+                pane: 'pane_VillaoPalazzo_12',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/tourist_museum.svg',
+            iconSize: [19.0, 19.0]
+        }),
+            }
+        }
+        map.createPane('pane_VillaoPalazzo_12');
+        map.getPane('pane_VillaoPalazzo_12').style.zIndex = 412;
+        map.getPane('pane_VillaoPalazzo_12').style['mix-blend-mode'] = 'normal';
+        var layer_VillaoPalazzo_12 = new L.geoJson(json_VillaoPalazzo_12, {
+            attribution: '',
+            pane: 'pane_VillaoPalazzo_12',
+            onEachFeature: pop_VillaoPalazzo_12,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_VillaoPalazzo_12_0(feature));
+            },
+        });
+        var cluster_VillaoPalazzo_12 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_VillaoPalazzo_12.addLayer(layer_VillaoPalazzo_12);
+
+        bounds_group.addLayer(layer_VillaoPalazzo_12);
+        cluster_VillaoPalazzo_12.addTo(map);
+        function pop_Altro_13(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - @type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - @type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - dc:type'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - dc:type'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:lat'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:lat'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - geo:long'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - geo:long'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - rdfs:label - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - rdfs:label - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:institutionalCISName - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @value'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @value'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - l0:description - _ - @language'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - l0:description - _ - @language'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - cis:hasCISNameInTime - @id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['_ - @graph - _ - foaf:depiction - @id'] !== null ? Autolinker.link(String(feature.properties['_ - @graph - _ - foaf:depiction - @id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Altro_13_0() {
+            return {
+                pane: 'pane_Altro_13',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/background_circle.svg',
+            iconSize: [11.399999999999999, 11.399999999999999]
+        }),
+            }
+        }
+        map.createPane('pane_Altro_13');
+        map.getPane('pane_Altro_13').style.zIndex = 413;
+        map.getPane('pane_Altro_13').style['mix-blend-mode'] = 'normal';
+        var layer_Altro_13 = new L.geoJson(json_Altro_13, {
+            attribution: '',
+            pane: 'pane_Altro_13',
+            onEachFeature: pop_Altro_13,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_Altro_13_0(feature));
+            },
+        });
+        var cluster_Altro_13 = new L.MarkerClusterGroup({showCoverageOnHover: false,
+            spiderfyDistanceMultiplier: 2});
+        cluster_Altro_13.addLayer(layer_Altro_13);
+
+        bounds_group.addLayer(layer_Altro_13);
+        cluster_Altro_13.addTo(map);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/datasetluoghiGEO_Pulito_1.png" /> dataset-luoghi-GEO_Pulito': cluster_datasetluoghiGEO_Pulito_1,"OSM Standard": layer_OSMStandard_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/Altro_13.png" /> Altro': cluster_Altro_13,'<img src="legend/VillaoPalazzo_12.png" /> Villa o Palazzo': cluster_VillaoPalazzo_12,'<img src="legend/Parcoogiardino_11.png" /> Parco o giardino': cluster_Parcoogiardino_11,'<img src="legend/ParcoArcheologico_10.png" /> Parco Archeologico': cluster_ParcoArcheologico_10,'<img src="legend/MonumentoFunerario_9.png" /> Monumento Funerario': layer_MonumentoFunerario_9,'<img src="legend/MonumentoIndustriale_8.png" /> Monumento Industriale': layer_MonumentoIndustriale_8,'<img src="legend/Monumento_7.png" /> Monumento': layer_Monumento_7,'<img src="legend/Chiesaoedificiodiculto_6.png" /> Chiesa o edificio di culto': cluster_Chiesaoedificiodiculto_6,'<img src="legend/Biblioteca_5.png" /> Biblioteca': cluster_Biblioteca_5,'<img src="legend/Areaarcheologica_4.png" /> Area archeologica': cluster_Areaarcheologica_4,'<img src="legend/Archivio_3.png" /> Archivio': cluster_Archivio_3,'<img src="legend/ArchitetturaFortificata_2.png" /> Architettura Fortificata': cluster_ArchitetturaFortificata_2,'<img src="legend/Architetturacivile_1.png" /> Architettura civile': cluster_Architetturacivile_1,"OSM Standard": layer_OSMStandard_0,},{collapsed:false}).addTo(map);
         setBounds();
-        map.addControl(new L.Control.Search({
-            layer: cluster_datasetluoghiGEO_Pulito_1,
-            initial: false,
-            hideMarkerOnCollapse: true,
-            propertyName: '_ - @id'}));
-        document.getElementsByClassName('search-button')[0].className +=
-         ' fa fa-binoculars';
         </script>
     </body>
 </html>
